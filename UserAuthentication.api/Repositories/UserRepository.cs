@@ -13,17 +13,17 @@ namespace UserAuthentication.api.Repositories
 			_context = context;
 		}
 
-		public Task<User> CreateAsync(UserDto user)
+		public async Task<User> CreateAsync(UserDto user)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task<User> GetUserFromEmail(string email)
+		public async Task<User> GetUserFromEmail(string email)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task<User> GetUserFromUsername(string username)
+		public async Task<User> GetUserFromUsername(string username)
 		{
 			throw new NotImplementedException();
 		}

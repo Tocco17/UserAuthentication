@@ -16,37 +16,37 @@ namespace UserAuthentication.api.Contexts
 			_connectionString = _configuration.GetConnectionString("SqlConnection");
 		}
 
-		public Task<T> CreateAsync<T>(string query)
+		public async Task<T> CreateAsync<T>(string query)
 		{
 			using (var conn = CreateConnection())
 			{
-				return conn.QuerySingleOrDefaultAsync<T>(query);
+				return await conn.QuerySingleOrDefaultAsync<T>(query);
 			}
 		}
 
-		public Task<T> CreateAsync<T>(string storedProcedure, DynamicParameters parameters)
+		public async Task<T> CreateAsync<T>(string storedProcedure, DynamicParameters parameters)
 		{
 			using (var conn = CreateConnection())
 			{
-				return conn.QuerySingleOrDefaultAsync<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+				return await conn.QuerySingleOrDefaultAsync<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
 			}
 		}
 
 		public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
 
-		public Task<IEnumerable<T>> GetAsync<T>(string query)
+		public async Task<IEnumerable<T>> GetAsync<T>(string query)
 		{
 			using (var conn = CreateConnection())
 			{
-				return conn.QueryAsync<T>(query);
+				return await conn.QueryAsync<T>(query);
 			}
 		}
 
-		public Task<IEnumerable<T>> GetAsync<T>(string storedProcedure, DynamicParameters parameters)
+		public async Task<IEnumerable<T>> GetAsync<T>(string storedProcedure, DynamicParameters parameters)
 		{
 			using (var conn = CreateConnection())
 			{
-				return conn.QueryAsync<T> (storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+				return await conn.QueryAsync<T> (storedProcedure, parameters, commandType: CommandType.StoredProcedure);
 			}
 		}
 	}

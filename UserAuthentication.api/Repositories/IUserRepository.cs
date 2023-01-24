@@ -5,8 +5,8 @@ namespace UserAuthentication.api.Repositories
 {
 	public interface IUserRepository
 	{
-		Task<User> CreateAsync(UserDto user);
-		Task<User> GetUserFromEmail(string email);
-		Task<User> GetUserFromUsername(string username);
+		public Task<User> CreateAsync(UserDto user);
+		public Task<User> GetUserFromEmail(string email);
+		public Task<User> GetUserFromUsername(string username);
 	}
 }
